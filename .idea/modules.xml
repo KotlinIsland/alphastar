@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/alphastar.iml" filepath="$PROJECT_DIR$/.idea/alphastar.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../sc2-local-play-bootstrap/.idea/sc2-local-play-bootstrap.iml" filepath="$PROJECT_DIR$/../sc2-local-play-bootstrap/.idea/sc2-local-play-bootstrap.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../sc2-why/.idea/sc2-why.iml" filepath="$PROJECT_DIR$/../sc2-why/.idea/sc2-why.iml" />
+    </modules>
+  </component>
+</project>

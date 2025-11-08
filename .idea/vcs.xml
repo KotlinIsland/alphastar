@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../sc2-local-play-bootstrap" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../sc2-why" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../sc2-why/ares-sc2" vcs="Git" />
+  </component>
+</project>
