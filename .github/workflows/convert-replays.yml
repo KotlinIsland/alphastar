@@ -2,8 +2,6 @@ name: Convert SC2 Replays
 
 on:
   push:
-  pull_request:
-    branches: [ main ]
   workflow_dispatch:
 
 jobs:
@@ -24,15 +22,21 @@ jobs:
         curl -LsSf https://astral.sh/uv/install.sh | sh
         echo "$HOME/.local/bin" >> $GITHUB_PATH
 
+    - name: Cache SC2 headless
+      id: cache-sc2
+      uses: actions/cache@v4
+      with:
+        path: /tmp/sc2
+        key: sc2-4.10-linux
+
     - name: Download and install SC2 headless
+      if: steps.cache-sc2.outputs.cache-hit != 'true'
       run: |
         mkdir -p /tmp/sc2
         cd /tmp/sc2
         wget https://blzdistsc2-a.akamaihd.net/Linux/SC2.4.10.zip
         unzip -P iagreetotheeula SC2.4.10.zip
         rm SC2.4.10.zip
-      env:
-        SC2PATH: /tmp/sc2
 
     - name: Install dependencies
       run: |
