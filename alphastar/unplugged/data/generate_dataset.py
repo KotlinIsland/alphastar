@@ -24,6 +24,9 @@ recommended that replays are stored in version-specific directories and
 processed a version at a time. The `SC2PATH` environment variable can be used
 to control the active SC2 version for each run.
 """
+# import jaxlib.cpu_feature_guard
+#
+# jaxlib.cpu_feature_guard.check_cpu_features = lambda: None
 
 import os
 from typing import Mapping
