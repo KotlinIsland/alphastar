@@ -28,7 +28,7 @@ cffi==2.0.0
     # via cryptography
 charset-normalizer==3.4.4
     # via requests
-chex==0.1.6
+chex==0.1.91
     # via -r requirements-in.txt
 crcmod==1.7
     # via apache-beam
@@ -81,11 +81,11 @@ immutabledict==4.2.2
     # via tensorflow-datasets
 importlib-resources==6.5.2
     # via etils
-jax
+jax==0.8.0
     # via
     #   -r requirements-in.txt
     #   chex
-jaxlib
+jaxlib==0.8.0
     # via
     #   -r requirements-in.txt
     #   chex
@@ -270,6 +270,7 @@ tqdm==4.67.1
 typing-extensions==4.15.0
     # via
     #   apache-beam
+    #   chex
     #   etils
     #   optree
     #   referencing
