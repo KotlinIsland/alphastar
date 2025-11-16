@@ -38,38 +38,36 @@ jobs:
         unzip -P iagreetotheeula SC2.4.10.zip
         rm SC2.4.10.zip
 
-    - name: Install dependencies
-      run: |
-        uv pip install -r requirements.txt --system
-        uv pip install converttest/pysc2-5.0.0-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl --system
-        uv pip install -e . --system
-
-    - name: Prepare directories
-      run: |
-        mkdir -p ${{ github.workspace }}/converted_output
-
-    - name: Generate partition file
-      run: |
-        cd converttest
-        for replay in *.SC2Replay; do
-          basename "$replay" .SC2Replay >> partition.txt
-        done
-        echo "Found $(wc -l < partition.txt) replays to convert"
-        cat partition.txt
-
-    - name: Convert replays
-      run: |
-        python3 -m alphastar.unplugged.data.generate_dataset \
-          --sc2_replay_path=${{ github.workspace }}/converttest \
-          --converted_path=${{ github.workspace }}/converted_output \
-          --partition_file=${{ github.workspace }}/converttest/partition.txt \
-          --converter_settings=./alphastar/unplugged/configs/alphastar_unrestricted_converter_settings.pbtxt
-      env:
-        SC2PATH: /tmp/sc2
-
-    - name: Upload converted replays
-      uses: actions/upload-artifact@v4
-      with:
-        name: converted-replays
-        path: converted_output/
-        retention-days: 30
+#    - name: Install dependencies
+#      run: |
+#        uv pip install -r requirements.txt -e . --system
+#
+#    - name: Prepare directories
+#      run: |
+#        mkdir -p ${{ github.workspace }}/converted_output
+#
+#    - name: Generate partition file
+#      run: |
+#        cd converttest
+#        for replay in *.SC2Replay; do
+#          basename "$replay" .SC2Replay >> partition.txt
+#        done
+#        echo "Found $(wc -l < partition.txt) replays to convert"
+#        cat partition.txt
+#
+#    - name: Convert replays
+#      run: |
+#        python3 -m alphastar.unplugged.data.generate_dataset \
+#          --sc2_replay_path=${{ github.workspace }}/converttest \
+#          --converted_path=${{ github.workspace }}/converted_output \
+#          --partition_file=${{ github.workspace }}/converttest/partition.txt \
+#          --converter_settings=./alphastar/unplugged/configs/alphastar_unrestricted_converter_settings.pbtxt
+#      env:
+#        SC2PATH: /tmp/sc2
+#
+#    - name: Upload converted replays
+#      uses: actions/upload-artifact@v4
+#      with:
+#        name: converted-replays
+#        path: converted_output/
+#        retention-days: 30
