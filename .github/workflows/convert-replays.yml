@@ -40,7 +40,8 @@ jobs:
 
     - name: Install dependencies
       run: |
-        uv pip install -r requirements.txt -e . --system
+        uv pip install -r requirements.txt --system
+        uv pip install -e . --system
 
     - name: Prepare directories
       run: |
