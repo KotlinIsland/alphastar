@@ -26,7 +26,7 @@ def get_version():
   return mod.__version__
 
 with open('requirements.txt') as f:
-  required = f.read().splitlines()
+  required = []# f.read().splitlines()
 
 
 LONG_DESCRIPTION = (
