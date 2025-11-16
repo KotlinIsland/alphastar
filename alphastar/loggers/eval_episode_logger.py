@@ -113,7 +113,7 @@ class EvalEpisodeLogger(episode_logger_lib.EpisodeLogger):
         self._new_episode()
 
     if self._agent_scope and agent_output:
-      obs_without_zerodimarrays = jax.tree_map(
+      obs_without_zerodimarrays = jax.tree.map(
           lambda x: x.item() if x.ndim == 0 else x, observation)
       self._agent_scope.write(
           output=agent_output, observation=obs_without_zerodimarrays.asdict())

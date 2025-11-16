@@ -206,7 +206,7 @@ class EvaluatorTest(parameterized.TestCase):
     self.assertDictEqual(x.asdict(),
                          jax.tree_unflatten(treedef, leaf_values).asdict())
     self.assertSetEqual(set(jax.tree_leaves(x)), set([4, 5, 6]))
-    self.assertDictEqual(jax.tree_map(lambda y: y+1, x).asdict(),
+    self.assertDictEqual(jax.tree.map(lambda y: y+1, x).asdict(),
                          {'a': 5, 'b': {'c': 6, 'd': 7}})
 
   def test_tree_and_chex(self):

@@ -73,7 +73,7 @@ def get_global_loss_masks(step_type: chex.Array,
                   num_last_steps_to_ignore] = True
   trajectory_mask = jnp.asarray(trajectory_mask)
   global_mask = jnp.logical_and(terminal_state_mask, trajectory_mask)
-  return jax.tree_map(lambda x: jnp.logical_and(x, global_mask), argument_masks)
+  return jax.tree.map(lambda x: jnp.logical_and(x, global_mask), argument_masks)
 
 
 def get_masked_log(data: chex.Array,

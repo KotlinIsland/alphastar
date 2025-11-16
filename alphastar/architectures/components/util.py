@@ -77,7 +77,7 @@ def get_full_argument_masks(action_spec: types.ActionSpec
       if func.function_type in REPEATED_FUNCTION_TYPES:
         # repeat is used iff the function type is in REPEATED_FUNCTION_TYPES
         full_argument_masks['repeat'][func.id] = True
-  return jax.tree_map(jnp.asarray, full_argument_masks)
+  return jax.tree.map(jnp.asarray, full_argument_masks)
 
 
 def vector_layer_norm(x: chex.Array) -> chex.Array:

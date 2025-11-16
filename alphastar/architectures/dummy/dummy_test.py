@@ -57,7 +57,7 @@ class DummyTest(parameterized.TestCase):
         burnin_len=0)
     def make_input(spec):
       return jnp.zeros((batch_size, unroll_len) + spec.shape, spec.dtype)
-    inputs = jax.tree_map(make_input, alphastar.input_spec)
+    inputs = jax.tree.map(make_input, alphastar.input_spec)
     rng_key = jax.random.PRNGKey(42)
     initial_state_init, initial_state_apply = hk.transform(
         jax.vmap(alphastar.initial_state, axis_size=batch_size))

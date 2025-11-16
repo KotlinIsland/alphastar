@@ -65,7 +65,7 @@ def play_episode(
       raise RuntimeError(
           'The agent must provide an "action" key in its output.')
     try:
-      timestep = env.step(jax.tree_map(np.squeeze, agent_output.get('action')))
+      timestep = env.step(jax.tree.map(np.squeeze, agent_output.get('action')))
     except TypeError as e:
       raise RuntimeError(
           f'Action issue in stepping : {agent_output["action"]}') from e

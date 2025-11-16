@@ -151,8 +151,8 @@ class AlphaStarAgent(Agent):
     initial_state_key, params_key, key = jax.random.split(rng, 3)
     state = self.initial_state(initial_state_key, batch_size=batch_size)
     logging.info('Warming up the agent.')
-    logging.info('Inputs: %s', jax.tree_map(lambda x: (x.shape, x.dtype), obs))
-    logging.info('State: %s', jax.tree_map(lambda x: (x.shape, x.dtype), state))
+    logging.info('Inputs: %s', jax.tree.map(lambda x: (x.shape, x.dtype), obs))
+    logging.info('State: %s', jax.tree.map(lambda x: (x.shape, x.dtype), state))
     params = self.init(params_key, obs, state)
     self.apply(params, key, obs, state)
     return params

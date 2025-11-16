@@ -78,7 +78,7 @@ if 'Automaton_v2' not in sc2_map_lib.get_maps():
 
 
 def _tree_has_nan(x):
-  return any(jax.tree_leaves(jax.tree_map(lambda y: np.isnan(np.sum(y)), x)))
+  return any(jax.tree_leaves(jax.tree.map(lambda y: np.isnan(np.sum(y)), x)))
 
 
 class StepEvaluationMixin(object):
@@ -124,7 +124,7 @@ class StepEvaluationMixin(object):
     agent_obs = types.StreamDict()
     agent_obs['step_type'] = np.array([[timestep.step_type]], dtype=np.int32)
     agent_obs['observation'] = types.StreamDict(
-        jax.tree_map(self._expand_fn, timestep.observation))
+        jax.tree.map(self._expand_fn, timestep.observation))
     if timestep.step_type == dm_env.StepType.FIRST:
       self._rng, rng = jax.random.split(self._rng)
       self._state = self._agent.initial_state(rng, batch_size=1)
@@ -145,7 +145,7 @@ class StepEvaluationMixin(object):
         raise ValueError(f'Architecture output {k} has NaNs.')
     filtered_output = output.filter(self._output_features)
     squeeze_batch_and_time = lambda x: np.squeeze(x, axis=(0, 1))
-    filtered_output = jax.tree_map(squeeze_batch_and_time, filtered_output)
+    filtered_output = jax.tree.map(squeeze_batch_and_time, filtered_output)
     return filtered_output, logs
 
 

@@ -138,7 +138,7 @@ class Component(abc.ABC):
     Returns:
       A Dict containing the state before the first step.
     """
-    return jax.tree_map(
+    return jax.tree.map(
         lambda spec: jnp.zeros(shape=spec.shape, dtype=spec.dtype),
         self.next_state_spec)
 

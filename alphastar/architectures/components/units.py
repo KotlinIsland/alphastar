@@ -1276,9 +1276,9 @@ class UnitTagsHead(modular.BatchedComponent):
       # scan replaces empty inputs with None:
       comp_inputs.update(carries or types.StreamDict())
       comp_inputs.update(loop_inputs or types.StreamDict())
-      comp_inputs = jax.tree_map(lambda x: x[jnp.newaxis], comp_inputs)
+      comp_inputs = jax.tree.map(lambda x: x[jnp.newaxis], comp_inputs)
       comp_outputs, _, _ = inner_module_unroll(comp_inputs, types.StreamDict())
-      comp_outputs = jax.tree_map(lambda x: x[0], comp_outputs)
+      comp_outputs = jax.tree.map(lambda x: x[0], comp_outputs)
       carries.update(comp_outputs.filter(self._carries))
       loop_outputs = comp_outputs.filter(self._per_step_outputs)
       action = comp_outputs[self._action_output]

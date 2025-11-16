@@ -82,7 +82,7 @@ def _generate_episode(replay_file_path: str, player_id: int, replay_data,
                    ' Attempt {attempt}.' if attempt else '')
       observations = replay_converter.converted_observation_stream(
           replay_data, player_id, converter_settings)
-      episode = jax.tree_map(lambda *xs: np.stack(xs), *observations)
+      episode = jax.tree.map(lambda *xs: np.stack(xs), *observations)
     except (
         sc_process.SC2LaunchError,
         remote_controller.ConnectError,

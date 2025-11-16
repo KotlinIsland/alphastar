@@ -61,7 +61,7 @@ def get_dummy_observation(input_spec: types.SpecDict,
   else:
     def zeros_like_spec(spec):
       return jnp.zeros((batch_size, unroll_len) + spec.shape, spec.dtype)
-  return jax.tree_map(zeros_like_spec, input_spec)
+  return jax.tree.map(zeros_like_spec, input_spec)
 
 
 class FeatureSpec:
@@ -345,8 +345,8 @@ def as_learner_input(raw_input: Mapping[str, Any],
   output['observation'] = types.StreamDict(observation)
   output['behaviour_features', 'action'] = types.StreamDict(behaviour_actions)
   if use_prev_features:
-    prev_output = jax.tree_map(lambda x: x[:, :-1], output)
-    output = jax.tree_map(lambda x: x[:, 1:], output)
+    prev_output = jax.tree.map(lambda x: x[:, :-1], output)
+    output = jax.tree.map(lambda x: x[:, 1:], output)
     output['prev_features', 'action'] = prev_output.get(
         ('behaviour_features', 'action'))
   return output

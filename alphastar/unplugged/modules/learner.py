@@ -125,7 +125,7 @@ class SupervisedLearner(acme.Learner):
     def _loss(params, state, key, data):
       if 'prev_features' in data:
         logging.log_first_n(logging.INFO, 'Using prev_features', n=1)
-        state.update(jax.tree_map(lambda x: x[:, 0], data.get('prev_features')))
+        state.update(jax.tree.map(lambda x: x[:, 0], data.get('prev_features')))
         del data['prev_features']
       outputs, next_state, _ = agent.apply(params, key, data, state)
       loss_inputs = data.copy()
@@ -236,7 +236,7 @@ class SupervisedLearner(acme.Learner):
       prefix = (num_devices, x.shape[0] // num_devices)
       return np.reshape(x, prefix + x.shape[1:])
 
-    multi_inputs = jax.tree_map(add_core_dimension, data)
+    multi_inputs = jax.tree.map(add_core_dimension, data)
     return multi_inputs
 
   def step(self):
@@ -276,7 +276,7 @@ class SupervisedLearner(acme.Learner):
 
   def save(self) -> TrainingState:
     # Serialize only the first replica of parameters and optimizer state.
-    return jax.tree_map(utils.get_from_first_device, self._state)
+    return jax.tree.map(utils.get_from_first_device, self._state)
 
   def restore(self, state: TrainingState):
     self._state = utils.replicate_in_all_devices(state, self._local_devices)

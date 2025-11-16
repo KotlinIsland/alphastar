@@ -77,7 +77,7 @@ class SupervisedTest(absltest.TestCase):
         burnin_len=burnin_len,
         name='supervised')
 
-    jnp_input = jax.tree_map(jnp.asarray, inputs)
+    jnp_input = jax.tree.map(jnp.asarray, inputs)
     loss, logs = supervised_loss.loss(types.StreamDict(jnp_input))
 
     self.assertEqual(
