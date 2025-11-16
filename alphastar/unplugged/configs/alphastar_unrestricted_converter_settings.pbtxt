@@ -1,0 +1,78 @@
+# Unrestricted AlphaStar Converter Settings
+# For creating a superhuman SC2 AI bot without human-like limitations
+#
+# Key differences from standard settings:
+# - No camera restrictions (can see/click entire map)
+# - 200 unit selection limit (vs 64 standard)
+# - No offscreen enemy masking
+# - Cloaked units visible (standard in bot competitions)
+# - Designed for AI ladder competition
+
+raw_settings {
+  resolution {
+    x: 256
+    y: 256
+  }
+  max_unit_count: 512
+  num_unit_features: 46
+
+  # UNRESTRICTED: Allow selecting up to 200 units at once
+  # (Standard human limit is 64, but bots can handle more)
+  max_unit_selection_size: 200
+
+  shuffle_unit_tags: 1
+  enable_action_repeat: true
+  use_camera_position: true
+
+  # Keep camera for spatial understanding, but won't restrict actions
+  camera: true
+  use_virtual_camera: true
+  virtual_camera_dimensions {
+    left: 16.0
+    right: 16.0
+    top: 13.0
+    bottom: 7.0
+  }
+
+  add_effects_to_units: true
+  add_cargo_to_units: true
+
+  # UNRESTRICTED: Don't mask offscreen enemies
+  # Bot can target units anywhere on the map without camera restriction
+  mask_offscreen_enemies: false
+
+  # UNRESTRICTED: Show cloaked units (standard in bot competitions)
+  # Bots compete on strategy/tactics, not on detection mechanics
+  # This ensures cloaked units appear in raw_units with their cloak state visible
+  # The cloak feature (FeatureUnit.cloak) is included in num_unit_features: 46
+  # CloakState values: 0=NotCloaked, 1=Cloaked, 2=CloakedDetected, 3=CloakedUnknown
+  show_cloaked: true
+  show_burrowed_shadows: true
+  show_placeholders: true
+}
+
+minimap {
+  x: 128
+  y: 128
+}
+
+# All standard minimap features
+minimap_features: "height_map"
+minimap_features: "visibility_map"
+minimap_features: "creep"
+minimap_features: "player_relative"
+minimap_features: "alerts"
+minimap_features: "pathable"
+minimap_features: "buildable"
+
+num_action_types: 556
+num_unit_types: 243
+num_upgrade_types: 90
+max_num_upgrades: 40
+camera_width_world_units: 24
+
+# High MMR for competitive play
+mmr: 7000
+
+supervised: true
+crop_to_playable_area: false
