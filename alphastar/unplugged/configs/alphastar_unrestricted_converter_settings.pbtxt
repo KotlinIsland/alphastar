@@ -41,12 +41,6 @@ raw_settings {
   # Bot can target units anywhere on the map without camera restriction
   mask_offscreen_enemies: false
 
-  # UNRESTRICTED: Show cloaked units (standard in bot competitions)
-  # Bots compete on strategy/tactics, not on detection mechanics
-  # This ensures cloaked units appear in raw_units with their cloak state visible
-  # The cloak feature (FeatureUnit.cloak) is included in num_unit_features: 46
-  # CloakState values: 0=NotCloaked, 1=Cloaked, 2=CloakedDetected, 3=CloakedUnknown
-  show_cloaked: true
   show_burrowed_shadows: true
   show_placeholders: true
 }
