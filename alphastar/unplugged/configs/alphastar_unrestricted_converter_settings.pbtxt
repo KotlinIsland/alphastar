@@ -37,8 +37,6 @@ raw_settings {
   add_cargo_to_units: true
 
   mask_offscreen_enemies: false
-
-  show_placeholders: true
 }
 
 minimap {
