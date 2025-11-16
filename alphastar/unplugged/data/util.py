@@ -246,7 +246,7 @@ def get_dataset_specs(
 ) -> Mapping[str, FeatureSpec]:
   """Generates dataset feature specs from SC2 observation specs."""
 
-  obs_features = jax.tree_util.tree_map(spec_to_feature, obs_spec)
+  obs_features = jax.tree.map(spec_to_feature, obs_spec)
 
   return dict(
       step_type=make_spec(dtype=np.int32, shape=(None,)),
