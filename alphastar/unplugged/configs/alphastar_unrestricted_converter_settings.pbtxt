@@ -5,7 +5,6 @@
 # - No camera restrictions (can see/click entire map)
 # - 200 unit selection limit (vs 64 standard)
 # - No offscreen enemy masking
-# - Cloaked units visible (standard in bot competitions)
 # - Designed for AI ladder competition
 
 raw_settings {
@@ -37,11 +36,8 @@ raw_settings {
   add_effects_to_units: true
   add_cargo_to_units: true
 
-  # UNRESTRICTED: Don't mask offscreen enemies
-  # Bot can target units anywhere on the map without camera restriction
   mask_offscreen_enemies: false
 
-  show_burrowed_shadows: true
   show_placeholders: true
 }
 
