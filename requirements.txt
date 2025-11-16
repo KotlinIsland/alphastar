@@ -42,7 +42,11 @@ cryptography==46.0.3
 deepdiff==8.6.1
     # via pysc2
 dm-env==1.6
-    # via pysc2
+    # via
+    #   dm-env-rpc
+    #   pysc2
+dm-env-rpc==1.1.6
+    # via -r requirements-in.txt
 dm-tree==0.1.9
     # via
     #   dm-env
@@ -75,10 +79,13 @@ gast==0.6.0
 google-pasta==0.2.0
     # via tensorflow
 googleapis-common-protos==1.72.0
-    # via tensorflow-metadata
+    # via
+    #   dm-env-rpc
+    #   tensorflow-metadata
 grpcio==1.76.0
     # via
     #   apache-beam
+    #   dm-env-rpc
     #   tensorboard
     #   tensorflow
 h5py==3.15.1
@@ -92,7 +99,9 @@ httplib2==0.22.0
 idna==3.11
     # via requests
 immutabledict==4.2.2
-    # via tensorflow-datasets
+    # via
+    #   dm-env-rpc
+    #   tensorflow-datasets
 importlib-resources==6.5.2
     # via etils
 jax==0.7.1
@@ -141,6 +150,7 @@ numpy==2.2.6
     #   apache-beam
     #   chex
     #   dm-env
+    #   dm-env-rpc
     #   dm-tree
     #   etils
     #   h5py
@@ -187,6 +197,7 @@ protobuf==6.33.1
     # via
     #   -r requirements-in.txt
     #   apache-beam
+    #   dm-env-rpc
     #   googleapis-common-protos
     #   proto-plus
     #   pysc2
