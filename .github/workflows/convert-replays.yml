@@ -38,6 +38,12 @@ jobs:
         unzip -P iagreetotheeula SC2.4.10.zip
         rm SC2.4.10.zip
 
+    - name: Verify SC2 installation
+      run: |
+        test -d /tmp/sc2/Versions || { echo "Error: /tmp/sc2/Versions directory not found"; exit 1; }
+        echo "SC2 Versions directory exists"
+        ls -la /tmp/sc2/
+
     - name: Install dependencies
       run: |
         uv pip install -r requirements.txt -e . --system
