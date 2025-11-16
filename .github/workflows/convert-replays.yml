@@ -40,9 +40,9 @@ jobs:
 
     - name: Verify SC2 installation
       run: |
-        test -d /tmp/sc2/Versions || { echo "Error: /tmp/sc2/Versions directory not found"; exit 1; }
+        test -d /tmp/sc2/StarCraftII/Versions || { echo "Error: /tmp/sc2/StarCraftII/Versions directory not found"; exit 1; }
         echo "SC2 Versions directory exists"
-        ls -la /tmp/sc2/
+        ls -la /tmp/sc2/StarCraftII/
 
     - name: Install dependencies
       run: |
@@ -69,7 +69,7 @@ jobs:
           --partition_file=${{ github.workspace }}/converttest/partition.txt \
           --converter_settings=./alphastar/unplugged/configs/alphastar_unrestricted_converter_settings.pbtxt
       env:
-        SC2PATH: /tmp/sc2
+        SC2PATH: /tmp/sc2/StarCraftII
 
     - name: Upload converted replays
       uses: actions/upload-artifact@v4
