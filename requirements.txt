@@ -3,13 +3,13 @@
 absl-py==2.3.1
     # via
     #   array-record
+    #   basedpysc2
     #   chex
     #   dm-env
     #   dm-tree
     #   etils
     #   keras
     #   ml-collections
-    #   pysc2
     #   tensorboard
     #   tensorflow
     #   tensorflow-datasets
@@ -25,6 +25,8 @@ attrs==25.4.0
     #   dm-tree
     #   jsonschema
     #   referencing
+./converttest/basedpysc2-5.0.0-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
+    # via -r requirements-in.txt
 beartype==0.21.0
     # via apache-beam
 certifi==2025.11.12
@@ -40,17 +42,17 @@ crcmod==1.7
 cryptography==46.0.3
     # via apache-beam
 deepdiff==8.6.1
-    # via pysc2
+    # via basedpysc2
 dm-env==1.6
     # via
+    #   basedpysc2
     #   dm-env-rpc
-    #   pysc2
 dm-env-rpc==1.1.6
     # via -r requirements-in.txt
 dm-tree==0.1.9
     # via
+    #   basedpysc2
     #   dm-env
-    #   pysc2
     #   tensorflow-datasets
 dnspython==2.8.0
     # via pymongo
@@ -61,7 +63,7 @@ docstring-parser==0.17.0
 einops==0.8.1
     # via etils
 enum34==1.1.10
-    # via pysc2
+    # via basedpysc2
 etils==1.13.0
     # via
     #   array-record
@@ -141,13 +143,14 @@ ml-dtypes==0.5.3
     #   tensorflow
 mpyq==0.2.5
     # via
-    #   pysc2
+    #   basedpysc2
     #   s2protocol
 namex==0.1.0
     # via keras
 numpy==2.2.6
     # via
     #   apache-beam
+    #   basedpysc2
     #   chex
     #   dm-env
     #   dm-env-rpc
@@ -159,7 +162,6 @@ numpy==2.2.6
     #   keras
     #   ml-dtypes
     #   pandas
-    #   pysc2
     #   scipy
     #   sk-video
     #   tensorboard
@@ -188,7 +190,7 @@ pandas==2.3.3
 pillow==12.0.0
     # via tensorboard
 portpicker==1.6.0
-    # via pysc2
+    # via basedpysc2
 promise==2.3
     # via tensorflow-datasets
 proto-plus==1.26.1
@@ -197,10 +199,10 @@ protobuf==6.33.1
     # via
     #   -r requirements-in.txt
     #   apache-beam
+    #   basedpysc2
     #   dm-env-rpc
     #   googleapis-common-protos
     #   proto-plus
-    #   pysc2
     #   s2clientprotocol
     #   tensorboard
     #   tensorflow
@@ -208,8 +210,8 @@ protobuf==6.33.1
     #   tensorflow-metadata
 psutil==7.1.3
     # via
+    #   basedpysc2
     #   portpicker
-    #   pysc2
     #   tensorflow-datasets
 pyarrow==18.1.0
     # via
@@ -222,7 +224,7 @@ pycparser==2.23
 pydot==1.4.2
     # via apache-beam
 pygame==2.6.1
-    # via pysc2
+    # via basedpysc2
 pygments==2.19.2
     # via rich
 pyjwt==2.10.1
@@ -233,8 +235,6 @@ pyparsing==3.2.5
     # via
     #   httplib2
     #   pydot
-./converttest/pysc2-5.0.0-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
-    # via -r requirements-in.txt
 python-dateutil==2.9.0.post0
     # via
     #   apache-beam
@@ -258,8 +258,8 @@ regex==2025.11.3
 requests==2.32.5
     # via
     #   apache-beam
+    #   basedpysc2
     #   hdfs
-    #   pysc2
     #   tensorflow
     #   tensorflow-datasets
 rich==14.2.0
@@ -271,9 +271,9 @@ rpds-py==0.29.0
 ./converttest/s2clientprotocol-5.0.15.95299.0-py3-none-any.whl
     # via
     #   -r requirements-in.txt
-    #   pysc2
+    #   basedpysc2
 s2protocol==5.0.15.95299.0
-    # via pysc2
+    # via basedpysc2
 scipy==1.16.3
     # via
     #   jax
@@ -294,7 +294,7 @@ six==1.17.0
     #   python-dateutil
     #   tensorflow
 sk-video==1.1.10
-    # via pysc2
+    # via basedpysc2
 sortedcontainers==2.4.0
     # via apache-beam
 tensorboard==2.20.0
@@ -322,11 +322,11 @@ tqdm==4.67.1
 typing-extensions==4.15.0
     # via
     #   apache-beam
+    #   basedpysc2
     #   chex
     #   etils
     #   grpcio
     #   optree
-    #   pysc2
     #   simple-parsing
     #   tensorflow
 tzdata==2025.2
@@ -334,7 +334,7 @@ tzdata==2025.2
 urllib3==2.5.0
     # via requests
 websocket-client==1.9.0
-    # via pysc2
+    # via basedpysc2
 werkzeug==3.1.3
     # via tensorboard
 wheel==0.45.1
