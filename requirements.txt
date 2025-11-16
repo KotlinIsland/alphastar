@@ -164,7 +164,7 @@ pygame==2.6.1
     # via pysc2
 pygments==2.19.2
     # via rich
-./converttest/pysc2-5.0.0-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
+pysc2 @ file://./converttest/pysc2-5.0.0-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
     # via -r requirements-in.txt
 python-dateutil==2.9.0.post0
     # via pandas
@@ -179,7 +179,7 @@ requests==2.32.5
     #   tensorflow-datasets
 rich==14.2.0
     # via keras
-./converttest/s2clientprotocol-5.0.15.95299.0-py3-none-any.whl
+s2clientprotocol @ file://./converttest/s2clientprotocol-5.0.15.95299.0-py3-none-any.whl
     # via
     #   -r requirements-in.txt
     #   pysc2
