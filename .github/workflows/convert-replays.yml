@@ -52,7 +52,7 @@ jobs:
 
     - name: Convert replays
       env:
-        SC2PATH: ./starcraft/StarCraftII
+        SC2PATH: ${{ github.workspace }}/starcraft/StarCraftII
       run: |
         uv run --no-dev python -m alphastar.unplugged.data.generate_dataset \
           --sc2_replay_path=${{ github.workspace }}/converttest \
