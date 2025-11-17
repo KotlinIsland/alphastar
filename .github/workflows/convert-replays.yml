@@ -59,14 +59,14 @@ jobs:
         cat partition.txt
 
     - name: Convert replays
+      env:
+        SC2PATH: /tmp/sc2/StarCraftII
       run: |
         python3 -m alphastar.unplugged.data.generate_dataset \
           --sc2_replay_path=${{ github.workspace }}/converttest \
           --converted_path=${{ github.workspace }}/converted_output \
           --partition_file=${{ github.workspace }}/converttest/partition.txt \
-          --converter_settings=./alphastar/unplugged/configs/alphastar_unrestricted_converter_settings.pbtxt
-      env:
-        SC2PATH: /tmp/sc2/StarCraftII
+          --converter_settings=./alphastar/unplugged/configs/alphastar_supervised_converter_settings.pbtxt
 
     - name: Upload converted replays
       uses: actions/upload-artifact@v4
