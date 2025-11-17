@@ -1,0 +1,137 @@
+[project]
+name = "alphastar"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+  "apache-beam",
+  "basedpysc2 ; sys_platform == 'linux'",
+  "chex>=0.1.91",
+  #"dm-acme[jax,tf]>=0.2.4"m
+  "dm_env_rpc",
+  #"dm-pix",
+  "jax>=0.2.26",
+  "jaxlib",
+  "ml-collections",
+  "pandas",
+  "protobuf",
+  "s2clientprotocol ; sys_platform == 'linux'",
+  "tensorflow>=2.20.0",
+  "tensorflow-datasets",
+
+  # constraints
+  "s2protocol",
+]
+
+[dependency-groups]
+dev = [
+  "basedpyright>=1.33.0",
+  "dprint-py>=0.50.2.0",
+  "ruff>=0.14.5",
+]
+
+[tool.uv]
+required-environments = "sys_platform == 'linux' and platform_machine == 'x86_64'"
+
+[tool.uv.sources]
+basedpysc2 = { path = "converttest/basedpysc2-5.0.0-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl" }
+s2clientprotocol = { path = "converttest/s2clientprotocol-5.0.15.95299.0-py3-none-any.whl" }
+s2protocol = { path = "converttest/s2protocol-5.0.15.95299.0-py3-none-any.whl" }
+
+[tool.basedpyright]
+
+[tool.ruff.lint]
+select = ["ALL"]
+
+ignore = [
+  "ANN204", # __init__ doesn't need a return type annotation
+  "COM812", # conflicts with ruff format
+  "D203", # conflicts with D211
+  "D213", # conflicts with D213
+
+  # don't like
+  "C901",
+  "PLR0911",
+  "PLR0912",
+  "PLR0913",
+  "PLR0915",
+
+  # gradual adoption
+  "ANN",
+  "D",
+  "NPY002",
+  "BLE001",
+  "ERA001",
+  "F841",
+  "EM102",
+  "TRY003",
+  "F401",
+  "FIX",
+  "TD",
+  "PTH",
+  "PLC0415",
+  "RUF059",
+  "UP",
+  "SLF001",
+  "RET504",
+  "ARG001",
+  "FBT003",
+  "PLR2004",
+  "ARG002",
+  "RUF046",
+  "RET505",
+  "RUF022",
+  "INP001",
+  "FBT002",
+  "FBT001",
+  "PT009",
+  "C408",
+  "COM819",
+  "RUF005",
+  "TRY004",
+  "EM101",
+  "SIM118",
+  "SIM108",
+  "PLW2901",
+  "B905",
+  "SIM102",
+  "EM103",
+  "C401",
+  "E741",
+  "RET",
+  "PLR1714",
+  "C405",
+  "PT027",
+  "PLR5501",
+  "PYI059",
+  "SLOT000",
+  "S311",
+  "PYI024",
+  "E731",
+  "ISC001",
+  "B022",
+  "ARG005",
+  "PIE807",
+  "S101",
+  "PLW0603",
+  "COM818",
+  "S301",
+  "N802",
+  "T201",
+  "B904",
+  "F821",
+  "C420",
+  "RUF015",
+  "PLR1704",
+  "W292",
+
+  # super gradual adoption
+  "Q000",
+  "E501",
+  "I001",
+  "EXE001",
+]
+
+[tool.ruff.lint.isort]
+force-single-line = true

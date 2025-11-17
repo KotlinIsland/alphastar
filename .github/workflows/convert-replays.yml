@@ -42,8 +42,7 @@ jobs:
       run: cp -r ./converttest/maps/* /tmp/sc2/StarCraftII/Maps/
 
     - name: Install dependencies
-      run: |
-        uv pip install -r requirements.txt -e . --system
+      run: uv sync
 
     - name: Prepare directories
       run: |

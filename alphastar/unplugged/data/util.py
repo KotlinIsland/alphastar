@@ -195,14 +195,31 @@ class TFExampleCoder(coders.Coder):
     """Serializes a row of data into a proto."""
     serialized_proto = self.serialize(self.convert_to_proto(row))
     if len(serialized_proto) > 1:
-      # Until b/203641663 is fixed, we skip episodes which fail to reconstruct.
-      # TODO(b/208420811): Skip if any array is >2gb instead.
-      try:
-        recons = self.decode(serialized_proto)
-        chex.assert_trees_all_close(row, recons)
-      except tf.errors.InvalidArgumentError as e:
-        logging.info('Failed to compress episode correctly. %s', e.message)
-        serialized_proto = None
+      # Check if any array is >2GB before attempting decode validation.
+      # Large arrays will cause TensorFlow's DecodeRaw to fail.
+      has_large_array = False
+      def check_array_size(value):
+        nonlocal has_large_array
+        if isinstance(value, (np.ndarray, jnp.ndarray)):
+          if value.nbytes > 2 * 1024 * 1024 * 1024:  # 2GB
+            has_large_array = True
+            size_gb = value.nbytes / (1024 * 1024 * 1024)
+            logging.info(
+              f'Skipping decode validation: array with shape={value.shape}, dtype={value.dtype} exceeds 2GB ({size_gb:.2f} GB)'
+            )
+      tree.map_structure(check_array_size, row)
+
+      if has_large_array:
+        # Skip validation for episodes with large arrays
+        logging.info('Episode contains arrays >2GB, skipping reconstruction validation')
+      else:
+        # Validate that serialization round-trips correctly for smaller episodes
+        try:
+          recons = self.decode(serialized_proto)
+          chex.assert_trees_all_close(row, recons)
+        except tf.errors.InvalidArgumentError as e:
+          logging.info('Failed to compress episode correctly. %s', e.message)
+          serialized_proto = None
     return serialized_proto
 
   def decode(self, example_string: str) -> Mapping[str, Any]:
