@@ -36,32 +36,32 @@ jobs:
     - name: Install dependencies
       run: uv sync
 
-#    - name: Prepare directories
-#      run: |
-#        mkdir -p ${{ github.workspace }}/converted_output
-#
-#    - name: Generate partition file
-#      run: |
-#        cd converttest
-#        for replay in *.SC2Replay; do
-#          basename "$replay" .SC2Replay >> partition.txt
-#        done
-#        echo "Found $(wc -l < partition.txt) replays to convert"
-#        cat partition.txt
-#
-#    - name: Convert replays
-#      env:
-#        SC2PATH: /tmp/sc2/StarCraftII
-#      run: |
-#        python3 -m alphastar.unplugged.data.generate_dataset \
-#          --sc2_replay_path=${{ github.workspace }}/converttest \
-#          --converted_path=${{ github.workspace }}/converted_output \
-#          --partition_file=${{ github.workspace }}/converttest/partition.txt \
-#          --converter_settings=./alphastar/unplugged/configs/alphastar_supervised_converter_settings.pbtxt
-#
-#    - name: Upload converted replays
-#      uses: actions/upload-artifact@v4
-#      with:
-#        name: converted-replays
-#        path: converted_output/
-#        retention-days: 30
+    - name: Prepare directories
+      run: |
+        mkdir -p ${{ github.workspace }}/converted_output
+
+    - name: Generate partition file
+      run: |
+        cd converttest
+        for replay in *.SC2Replay; do
+          basename "$replay" .SC2Replay >> partition.txt
+        done
+        echo "Found $(wc -l < partition.txt) replays to convert"
+        cat partition.txt
+
+    - name: Convert replays
+      env:
+        SC2PATH: /tmp/sc2/StarCraftII
+      run: |
+        python3 -m alphastar.unplugged.data.generate_dataset \
+          --sc2_replay_path=${{ github.workspace }}/converttest \
+          --converted_path=${{ github.workspace }}/converted_output \
+          --partition_file=${{ github.workspace }}/converttest/partition.txt \
+          --converter_settings=./alphastar/unplugged/configs/alphastar_supervised_converter_settings.pbtxt
+
+    - name: Upload converted replays
+      uses: actions/upload-artifact@v4
+      with:
+        name: converted-replays
+        path: converted_output/
+        retention-days: 30
