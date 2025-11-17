@@ -26,7 +26,7 @@ jobs:
       id: cache-sc2
       uses: actions/cache@v4
       with:
-        path: /alphastar/starcraft
+        path: ./starcraft
         key: sc2-4.10-linux
 
     - name: Download and install SC2 headless
