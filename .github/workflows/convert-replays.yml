@@ -31,15 +31,7 @@ jobs:
 
     - name: Download and install SC2 headless
       if: steps.cache-sc2.outputs.cache-hit != 'true'
-      run: |
-        mkdir -p /tmp/sc2
-        cd /tmp/sc2
-        wget https://blzdistsc2-a.akamaihd.net/Linux/SC2.4.10.zip
-        unzip -P iagreetotheeula SC2.4.10.zip
-        rm SC2.4.10.zip
-
-    - name: install map
-      run: cp -r ./converttest/maps/* /tmp/sc2/StarCraftII/Maps/
+      run: scripts/setup_environment.sh
 
     - name: Install dependencies
       run: uv sync
