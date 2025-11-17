@@ -54,7 +54,7 @@ jobs:
       env:
         SC2PATH: /tmp/sc2/StarCraftII
       run: |
-        python3 -m alphastar.unplugged.data.generate_dataset \
+        uv run python -m alphastar.unplugged.data.generate_dataset \
           --sc2_replay_path=${{ github.workspace }}/converttest \
           --converted_path=${{ github.workspace }}/converted_output \
           --partition_file=${{ github.workspace }}/converttest/partition.txt \
