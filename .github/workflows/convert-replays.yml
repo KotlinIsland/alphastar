@@ -23,7 +23,7 @@ jobs:
         enable-cache: true
 
     - name: Install dependencies
-      run: uv sync --locked -no-dev --offline
+      run: uv sync --locked --no-dev --offline
 
     - name: Cache SC2 headless
       id: cache-sc2
